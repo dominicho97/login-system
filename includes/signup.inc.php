@@ -32,7 +32,21 @@ $passwordRepeat = $_POST['pwd-repeat'];
     header("Location: ../signup.php?error=passwordcheck&uid=".$username."&mail=".$email);
     exit();
   }
-  
 
+  else {
+
+    $sql = "SELECT uidUsers FROM users WHERE uidUsers = ? ";
+    $stmt = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+      header("Location: ../signup.php?error=sqlerror"); 
+      exit();
+    }
+    else{
+      mysqli_stmnt_bind_param($stmnt, "s", $username);
+      mysqli_stmnt_execute($stmnt);
+    }
+
+
+  }
 
 }
