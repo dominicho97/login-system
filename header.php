@@ -11,8 +11,8 @@
   
 <header>
   <nav>
-    <a href = "#">
-      <img src="img/lildomsq.PNG" alt="logo">
+    <a href = "#"class="logo">
+     
     </a>
     <ul>
       <li><a href="#">Home</li>
