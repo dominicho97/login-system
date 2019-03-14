@@ -44,6 +44,12 @@ $passwordRepeat = $_POST['pwd-repeat'];
     else{
       mysqli_stmnt_bind_param($stmnt, "s", $username);
       mysqli_stmnt_execute($stmnt);
+      mysqli_stmnt_store_result($stmnt);//takes result from dB and stores in var stmnt
+      $resultCheck = mysqli_stmnt_num_rows($stmnt);
+      if($resultCheck > 0){
+        header("Location: ../signup.php?error=usertaken&mail=".$email); 
+      exit();
+      }
     }
 
 
