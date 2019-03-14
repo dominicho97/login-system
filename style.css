@@ -30,5 +30,7 @@ p {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-#pwd {
+.signup {
+  text-decoration: none;
+  color: black;
 }
