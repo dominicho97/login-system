@@ -50,6 +50,19 @@ $passwordRepeat = $_POST['pwd-repeat'];
         header("Location: ../signup.php?error=usertaken&mail=".$email); 
       exit();
       }
+      else {
+        $sql = "INSERT INTO users (uidUsers,emailUsers,pwdUsers) VALUES (?,?,?)" ;
+        $stmt = mysqli_stmt_init($conn);
+        if(!mysqli_stmt_prepare($stmt, $sql)){
+          header("Location: ../signup.php?error=sqlerror"); 
+          exit();
+        }
+      else{
+      mysqli_stmnt_bind_param($stmnt, "sss", $username, $password, $email);
+      mysqli_stmnt_execute($stmnt);
+      mysqli_stmnt_store_result($stmnt);
+        }
+      }
     }
 
 
