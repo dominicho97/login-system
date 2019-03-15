@@ -65,12 +65,19 @@ $passwordRepeat = $_POST['pwd-repeat'];
         
       mysqli_stmnt_bind_param($stmnt, "sss", $username, $email, $hashedPwd);
       mysqli_stmnt_execute($stmnt);
-      mysqli_stmnt_store_result($stmnt);
+      header("Location: ../signup.php?signup=succes"); 
+      exit();
         }
       }
     }
 
 
   }
+  mysqli_stmnt_close($stmnt);
+  mysqli_close($conn);
 
+}
+else{
+  header("Location: ../signup.php"); 
+      exit();
 }
