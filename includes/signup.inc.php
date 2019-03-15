@@ -58,7 +58,12 @@ $passwordRepeat = $_POST['pwd-repeat'];
           exit();
         }
       else{
-      mysqli_stmnt_bind_param($stmnt, "sss", $username, $password, $email);
+
+        //hashing is converting the userpassword into random characters for safety
+        $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
+
+        
+      mysqli_stmnt_bind_param($stmnt, "sss", $username, $email, $hashedPwd);
       mysqli_stmnt_execute($stmnt);
       mysqli_stmnt_store_result($stmnt);
         }
